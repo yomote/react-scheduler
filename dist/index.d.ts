@@ -10,9 +10,9 @@ export declare type Config = {
      */
     filterButtonState?: number;
     /**
-     * Language code: "en" | "pl"
+     * Language code: "en" | "pl" | "de"
      */
-    lang?: LangCodes;
+    lang?: LangCodes | string;
     isFiltersButtonVisible?: boolean;
     maxRecordsPerPage?: number;
     /**
@@ -22,9 +22,22 @@ export declare type Config = {
      * @default false
      */
     includeTakenHoursOnWeekendsInDayView?: boolean;
+    /**
+     * show tooltip when hovering over tiles items
+     * @default true
+     */
+    showTooltip?: boolean;
+    translations?: LocaleType[];
 };
 
-declare type LangCodes = "en" | "pl";
+declare type LangCodes = "en" | "pl" | "de";
+
+declare type LocaleType = {
+    id: string;
+    lang: Translation;
+    translateCode: string;
+    dayjsTranslations: string | ILocale | undefined;
+};
 
 declare type ParsedDatesRange = {
     startDate: Date;
@@ -98,6 +111,26 @@ declare type SchedulerRowLabel = {
     icon: string;
     title: string;
     subtitle: string;
+};
+
+declare type Topbar = {
+    filters: string;
+    next: string;
+    prev: string;
+    today: string;
+    view: string;
+};
+
+declare type Translation = {
+    feelingEmpty: string;
+    free: string;
+    loadNext: string;
+    loadPrevious: string;
+    over: string;
+    taken: string;
+    topbar: Topbar;
+    search: string;
+    week: string;
 };
 
 export declare type ZoomLevel = ZoomLevelTuple[number];
